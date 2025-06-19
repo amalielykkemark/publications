@@ -1,0 +1,48 @@
+\documentclass{article}
+\usepackage[margin=3cm]{geometry}
+\usepackage[
+    sorting=ydnt,
+    giveninits=true,
+    maxbibnames=100,
+    style=numeric,
+    sortcites=true,
+    backend=biber,
+    defernumbers=true,
+    natbib
+]{biblatex}
+
+
+\renewbibmacro*{url+urldate}{} % remove URL and urldate printing completely
+\addbibresource{My publications.bib}
+
+
+% % Gør 'Møller' fed i forfatterlisten
+% \renewcommand*{\mkbibnamefamily}[1]{%
+%   \IfStrEq{#1}{Møller}
+%     {\textbf{#1}}%
+%     {#1}}
+% \renewcommand*{\mkbibnamegiven}[1]{%
+%   \IfStrEq{#1}{A~L}
+%     {\textbf{#1}}%
+%     {#1}}
+
+\title{Full publication list}
+\author{Amalie Lykkemark Møller}
+\date{}
+
+\AtEveryBibitem{%
+  \clearfield{doi}%
+  % \clearfield{url}%
+  \clearfield{issn}
+ }
+ 
+\begin{document}
+
+\maketitle
+
+\nocite{*} 
+\printbibliography[type=article,title={Peer-reviewed publications}]
+\printbibliography[type=misc,title={Other publications}]
+\printbibliography[type=thesis,title={PhD Thesis}]
+
+\end{document}
